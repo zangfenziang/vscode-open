@@ -1,19 +1,19 @@
 {
-	"name": "vscode-open",
-	"displayName": "Open",
+	"name": "vscode-open-mini",
+	"displayName": "open-mini",
 	"description": "An extension for opening files",
 	"version": "0.2.3",
-	"publisher": "alexander-yu",
+	"publisher": "fxxzhang",
 	"engines": {
 		"vscode": "^1.43.0"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/alexander-yu/vscode-open"
+		"url": "https://github.com/zangfenziang/vscode-open"
 	},
-	"homepage": "https://github.com/alexander-yu/vscode-open",
+	"homepage": "https://github.com/zangfenziang/vscode-open",
 	"bugs": {
-		"url": "https://github.com/alexander-yu/vscode-open/issues"
+		"url": "https://github.com/zangfenziang/vscode-open/issues"
 	},
 	"categories": [
 		"Other"
@@ -48,27 +48,9 @@
 			}
 		],
 		"menus": {
-			"explorer/context": [
-				{
-					"command": "vscode-open.open",
-					"group": "navigation"
-				},
-				{
-					"command": "vscode-open.openLines",
-					"group": "navigation"
-				}
-			],
 			"editor/context": [
 				{
 					"command": "vscode-open.open",
-					"group": "navigation"
-				},
-				{
-					"command": "vscode-open.openPR",
-					"group": "navigation"
-				},
-				{
-					"command": "vscode-open.openLines",
 					"group": "navigation"
 				}
 			]
@@ -78,21 +60,6 @@
 				"command": "vscode-open.open",
 				"key": "ctrl+alt+o o",
 				"mac": "cmd+alt+o o"
-			},
-			{
-				"command": "vscode-open.openPR",
-				"key": "ctrl+alt+o p",
-				"mac": "cmd+alt+o p"
-			},
-			{
-				"command": "vscode-open.openLines",
-				"key": "ctrl+alt+o l",
-				"mac": "cmd+alt+o l"
-			},
-			{
-				"command": "vscode-open.openURI",
-				"key": "ctrl+alt+o u",
-				"mac": "cmd+alt+o u"
 			}
 		],
 		"configuration": {
@@ -103,16 +70,6 @@
 					"type": "array",
 					"default": [],
 					"description": "File mappings"
-				},
-				"open.prMappings": {
-					"type": "array",
-					"default": [],
-					"description": "Pull request mappings"
-				},
-				"open.uriMappings": {
-					"type": "array",
-					"default": [],
-					"description": "URI mappings"
 				}
 			}
 		}
