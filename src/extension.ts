@@ -102,7 +102,7 @@ function open() {
 			const match = pattern.exec(uri.fsPath);
 			if (match) {
 				context.match = match;
-				const output = variables.resolve(mapping.output, context);
+				const output = variables.resolve(mapping.output, context).replace(/ /g, '');
 				vscode.env.openExternal(vscode.Uri.parse(output, true));
 				return;
 			}
