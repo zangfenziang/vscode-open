@@ -57,31 +57,31 @@ export function evaluateEditor(context: Context, value: string, variable: string
             }
             return context.lines.toFragment(context.lineSeparator, context.linePrefix);
         case 'workspaceFolder':
-            return getWorkspaceFolder(variable, argument).fsPath;
+            return getWorkspaceFolder(variable, argument).path;
         case 'workspaceFolderBasename':
-            return path.basename(getWorkspaceFolder(variable, argument).fsPath);
+            return path.basename(getWorkspaceFolder(variable, argument).path);
         case 'file':
-            return getOpenFile(variable).fsPath;
+            return getOpenFile(variable).path;
         case 'relativeFile':
             return path.normalize(path.relative(
-                getWorkspaceFolder(variable, argument).fsPath,
-                getOpenFile(variable).fsPath,
+                getWorkspaceFolder(variable, argument).path,
+                getOpenFile(variable).path,
             ));
         case 'relativeFileDirname':
             return path.normalize(path.relative(
-                getWorkspaceFolder(variable, argument).fsPath,
-                path.dirname(getOpenFile(variable).fsPath),
+                getWorkspaceFolder(variable, argument).path,
+                path.dirname(getOpenFile(variable).path),
             ));
         case 'fileBasename':
-            return path.basename(getOpenFile(variable).fsPath);
+            return path.basename(getOpenFile(variable).path);
         case 'fileBasenameNoExtension':
-            const basename = path.basename(getOpenFile(variable).fsPath);
+            const basename = path.basename(getOpenFile(variable).path);
             const extension = path.extname(basename);
             return basename.slice(0, -extension.length);
         case 'fileDirname':
-            return path.dirname(getOpenFile(variable).fsPath);
+            return path.dirname(getOpenFile(variable).path);
         case 'fileExtname':
-            return path.extname(getOpenFile(variable).fsPath);
+            return path.extname(getOpenFile(variable).path);
         default:
             throw new Error(`${variable} is not a valid editor variable.`);
     }

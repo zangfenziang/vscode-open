@@ -31,17 +31,17 @@ async function openPR() {
 
 		for (const mapping of mappings)  {
 			const pattern = RegExp(variables.resolve(mapping.pattern, context), 'g');
-			const match = pattern.exec(uri.fsPath);
+			const match = pattern.exec(uri.path);
 			if (match) {
 				context.match = match;
 				const line = editor.selection.active.line;
-				const pr = await git.getPullRequestURI(uri.fsPath, line, mapping.provider);
+				const pr = await git.getPullRequestURI(uri.path, line, mapping.provider);
 				vscode.env.openExternal(pr);
 				return;
 			}
 		}
 
-		throw new Error(`${uri.fsPath} did not match any PR mappings`);
+		throw new Error(`${uri.path} did not match any PR mappings`);
 	} catch (error) {
 		vscode.window.showErrorMessage(error.message);
 	}
@@ -67,7 +67,7 @@ function openLines() {
 			}
 
 			const pattern = RegExp(variables.resolve(mapping.pattern, context), 'g');
-			const match = pattern.exec(uri.fsPath);
+			const match = pattern.exec(uri.path);
 			if (match) {
 				context.match = match;
 				const output = variables.resolve(mapping.output, context);
@@ -76,7 +76,7 @@ function openLines() {
 			}
 		}
 
-		throw new Error(`${uri.fsPath} did not match any file mappings`);
+		throw new Error(`${uri.path} did not match any file mappings`);
 	} catch (error) {
 		vscode.window.showErrorMessage(error.message);
 	}
@@ -99,7 +99,7 @@ function open() {
 			}
 
 			const pattern = RegExp(variables.resolve(mapping.pattern, context), 'g');
-			const match = pattern.exec(uri.fsPath);
+			const match = pattern.exec(uri.path);
 			if (match) {
 				context.match = match;
 				const output = variables.resolve(mapping.output, context).replace(/ /g, '');
@@ -108,7 +108,7 @@ function open() {
 			}
 		}
 
-		throw new Error(`${uri.fsPath} did not match any file mappings`);
+		throw new Error(`${uri.path} did not match any file mappings`);
 	} catch (error) {
 		vscode.window.showErrorMessage(error.message);
 	}
