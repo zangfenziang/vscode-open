@@ -1,3 +1,4 @@
+import * as path from 'path';
 import * as constants from './constants';
 import * as range from './range';
 
@@ -16,7 +17,11 @@ export class Context {
     linePrefix: string;
 
     constructor({ lines, match, lineSeparator, linePrefix }: ContextParameters) {
-        this.env = process.env;
+        this.env = {};
+        const reg = new RegExp(path.sep, 'g');
+        Object.keys(process.env).forEach(name => {
+            this.env[name] = process.env[name]?.replace(reg, '/');
+        });
         this.lines = lines || null;
         this.match = match || null;
         this.lineSeparator = lineSeparator || constants.DEFAULT_LINE_SEPARATOR;
