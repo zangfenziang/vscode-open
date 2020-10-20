@@ -5,7 +5,7 @@ import { getRegex } from './regex';
 const VARIABLE_REGEX = /\$\{(.+?)\}/g;
 
 const VARIABLE_HANDLERS = new Map<string, (context: Context, value: string, argument: string | undefined) => string>([
-    ['env', evaluateEnv],
+    // ['env', evaluateEnv],
     ['match', evaluateMatch],
     ['editor', evaluateEditor],
     ['regex', evaluateRegex],

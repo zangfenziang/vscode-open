@@ -17,11 +17,7 @@ export class Context {
     linePrefix: string;
 
     constructor({ lines, match, lineSeparator, linePrefix }: ContextParameters) {
-        this.env = {};
-        const reg = new RegExp(path.sep, 'g');
-        Object.keys(process.env).forEach(name => {
-            this.env[name] = process.env[name]?.replace(reg, '/');
-        });
+        this.env = process.env;
         this.lines = lines || null;
         this.match = match || null;
         this.lineSeparator = lineSeparator || constants.DEFAULT_LINE_SEPARATOR;
